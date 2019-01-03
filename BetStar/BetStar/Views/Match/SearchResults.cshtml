@@ -1,0 +1,93 @@
+﻿@model BetStar.ViewModels.MatchViewModel
+@{
+	ViewData["Title"] = "SearchResults";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SearchResults</h2>
+
+<div class="matchtable" id="matchtable">
+
+
+
+	<div class="row">
+
+		<div class="matchinfo"></div>
+		<div class="matchinfo"></div>
+		<div id="itemhome">1</div>
+		<div id="itemhome">X</div>
+		<div id="itemhome">2</div>
+		<div class="matchinfo"></div>
+
+	</div>
+
+	@foreach (var item in Model.AllMatches)
+	{
+		@if (item.Available)
+		{
+			<h4>@item.Id</h4>
+
+			<div class="matchinfo">@item.DateTime</div>
+
+			<div class="matchinfo">@item.HomeTeam - @item.AwayTeam</div>
+
+			<div class="item" onclick="Betslip(@item.Id)" id="itemhome">@item.BettingOptions.Find(i => i.Choice == "1").Odd</div>
+
+			<div class="item" onclick="Betslip(@item.Id)" id="itemhome">@item.BettingOptions.Find(i => i.Choice == "X").Odd</div>
+
+			<div class="item" onclick="Betslip(@item.Id)" id="itemhome">@item.BettingOptions.Find(i => i.Choice == "2").Odd</div>
+
+			<div class="matchinfo">@Html.ActionLink("Meer", "MatchDetails", "Match", new { id = item.Id })</div>
+
+		}
+
+	}
+
+	<div id="betslipdiv">
+
+	</div>
+
+</div>
+
+
+<style>
+
+	#betslipdiv {
+		color: white;
+		background-color: pink;
+	}
+
+	#matchtable {
+		color: black;
+		background-color: white;
+	}
+
+	#itemhome {
+		display: inline-block;
+		width: 10%;
+		text-align: center;
+	}
+
+	.matchinfo {
+		display: inline-block;
+		width: 20%;
+	}
+</style>
+
+<script>
+
+
+	function Betslip(bo) {
+		alert('aangeroepen')
+		$.ajax({
+			url: "/Match/ChangeBetslip",
+			type: "GET",
+			data: { id: bo }
+		})
+			.done(function (partialViewResult) {
+				$("#betslipdiv").html(partialViewResult);
+			});
+	}
+
+
+</script>

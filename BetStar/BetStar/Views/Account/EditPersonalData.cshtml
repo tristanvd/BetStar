@@ -1,0 +1,20 @@
+﻿@model BetStar.ViewModels.Account.UserViewModel
+@{
+    ViewData["Title"] = "EditPersonalData";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<h2>EditPersonalData</h2>
+
+<form method="post">
+
+	<input type="text" asp-for="User.Email" value="@Model.User.Email" class="form-control" />
+	<input type="text" disabled asp-for="User.Username" class="form-control" />
+	<input type="text" asp-for="User.Password" class="form-control" />
+	<input type="text" asp-for="User.Name" value="@Model.User.Name" class="form-control" />
+	<input type="text" disabled asp-for="User.Birthdate" class="form-control" />
+	<input type="text" asp-for="User.Country" value="@Model.User.Country" class="form-control" />
+
+	<button type="submit">Save</button>
+
+</form>

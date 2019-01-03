@@ -1,0 +1,6 @@
+﻿@model BetStar.ViewModels.MatchViewModel
+
+<form method="post" asp-action="SearchResults" asp-controller="Match" class="formSearchBar">
+	<input class="searchbar" type="text" placeholder="Search Teams" asp-for="SearchWord" id="searchbox" />
+	<button class="searchbutton" type="submit">S</button>
+</form>

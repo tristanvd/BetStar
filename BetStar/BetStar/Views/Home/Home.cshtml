@@ -1,0 +1,162 @@
+﻿@model BetStar.ViewModels.MatchViewModel
+
+@{
+	ViewData["Title"] = "Home";
+	var roleId = Convert.ToInt32(User.Claims.Where(claim => claim.Type == "RoleId").Select(claim => claim.Value).SingleOrDefault());
+
+	if (roleId == 1)
+	{
+		Layout = "~/Views/Shared/_Layout.cshtml";
+	}
+	if (roleId == 2)
+	{
+		Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	}
+
+}
+
+
+
+<div class="matchtable" id="matchtable">
+
+
+
+	<div class="homeTableHead">
+
+		<div class="matchinfo"></div>
+		<div class="matchinfo"></div>
+		<div id="itemhome">1</div>
+		<div id="itemhome">X</div>
+		<div id="itemhome">2</div>
+		<div class="matchinfo"></div>
+		<div class="matchinfo"></div>
+
+	</div>
+
+	@foreach (var item in Model.AllMatches)
+	{
+		@if (item.Available)
+		{
+			
+
+		<div class="matchrow">
+
+		<div class="matchinfo">@item.DateTime</div>
+
+		<div class="matchinfo">@item.HomeTeam - @item.AwayTeam</div>
+
+		@if (@item.BettingOptions.Find(i => i.Choice == "1").Odd > 1)
+		{
+			<div class="item" onclick="Betslip(@item.BettingOptions.Find(i => i.Choice == "1").Id)" id="itemhome">@item.BettingOptions.Find(i => i.Choice == "1").Odd</div>
+		}
+		else
+		{
+			<div class="item" id="itemhome">locked</div>
+		}
+
+		@if (@item.BettingOptions.Find(i => i.Choice == "X").Odd > 1)
+		{
+			<div class="item" onclick="Betslip(@item.BettingOptions.Find(i => i.Choice == "X").Id)" id="itemhome">@item.BettingOptions.Find(i => i.Choice == "X").Odd</div>
+		}
+		else
+		{
+			<div class="item" id="itemhome">locked</div>
+		}
+
+		@if (@item.BettingOptions.Find(i => i.Choice == "2").Odd > 1)
+		{
+			<div class="item" onclick="Betslip(@item.BettingOptions.Find(i => i.Choice == "2").Id)" id="itemhome">@item.BettingOptions.Find(i => i.Choice == "2").Odd</div>
+		}
+		else
+		{
+			<div class="item" id="itemhome">locked</div>
+		}
+		<div class="matchinfo">@Html.ActionLink("Meer", "MatchDetails", "Match", new { id = item.Id })</div>
+
+		<div class="matchinfo">@Html.ActionLink("Graphs", "Stats", "Match", new { id = item.Id })</div>
+
+		</div>
+		}
+
+	}
+
+	<div id="betslipdiv">
+
+	</div>
+
+</div>
+
+
+<style>
+
+	#betslipdiv {
+		color:white;
+		background-color:pink;
+	}
+
+	/*#matchtable {
+		color:black;
+		background-color:white;
+	}*/
+
+	#itemhome {
+		display:inline-block;
+		width:10%;
+		text-align:center;
+	}
+
+	.matchinfo {
+		display:inline-block;
+		width:16%;
+	}
+
+	.homeTableHead {
+		color: white;
+	}
+
+
+
+	
+
+</style>
+
+<script>
+
+	function GetData() {
+
+		var stringids = "";
+		var nr = document.getElementsByClassName('rowid');
+		for (var i = 0; i < nr.length; i++) {
+			stringids = stringids + document.getElementsByClassName('rowid')[i].innerHTML + ',';
+		}
+		return stringids;
+	}
+
+	function Betslip(id) {
+
+		$.ajax({
+			url: "/Match/ChangeBetslip",
+			type: "GET",
+			data: { id: id, idstring: GetData() }
+		})
+			.done(function (partialViewResult) {
+				$("#betslipdiv").html(partialViewResult);
+			});
+
+
+	}
+	
+	//function Betslip(bo) {
+	//	alert('aangeroepen')
+	//	$.ajax({
+	//		url: "/Match/ChangeBetslip",
+	//		type: "GET",
+	//		data: { id: bo }
+	//	})
+	//		.done(function (partialViewResult) {
+	//			$("#betslipdiv").html(partialViewResult);
+	//		});
+	//}
+		
+
+</script>

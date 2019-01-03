@@ -1,0 +1,38 @@
+﻿@model BetStar.ViewModels.AddMatchResultViewModel
+@{
+    ViewData["Title"] = "AddMatchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddMatchResult</h2>
+
+@Model.Match.HomeTeam - @Model.Match.AwayTeam
+@Model.Match.DateTime
+
+<form method="post" asp-action="AddMatchResultPost" asp-controller="Admin">
+
+	<input type="hidden" asp-for="Match.Id" value="@Model.Match.Id" />
+
+	<label asp-for="Result" class="control-label">Result</label><br />
+	<input asp-for="Result" class="form-control" type="text" /><br />
+
+	<label asp-for="HomeTeamCorners" class="control-label">Home team corners</label><br />
+	<input asp-for="HomeTeamCorners" class="form-control" type="text" /><br />
+
+	<label asp-for="AwayTeamCorners" class="control-label">Away team corners</label><br />
+	<input asp-for="AwayTeamCorners" class="form-control" type="text" /><br />
+
+	<label asp-for="HomeTeamYellowCards" class="control-label">Home team yellow cards</label><br />
+	<input asp-for="HomeTeamYellowCards" class="form-control" type="text" /><br />
+
+	<label asp-for="AwayTeamYellowCards" class="control-label">Away team yellow cards</label><br />
+	<input asp-for="AwayTeamYellowCards" class="form-control" type="text" /><br />
+
+	<label asp-for="HomeTeamRedCards" class="control-label">Away team yellow cards</label><br />
+	<input asp-for="HomeTeamRedCards" class="form-control" type="text" /><br />
+
+	<label asp-for="AwayTeamRedCards" class="control-label">Away team yellow cards</label><br />
+	<input asp-for="AwayTeamRedCards" class="form-control" type="text" /><br />
+
+	<button type="submit">Add</button>
+</form>

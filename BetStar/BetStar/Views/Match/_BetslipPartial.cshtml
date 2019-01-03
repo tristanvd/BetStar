@@ -1,0 +1,80 @@
+﻿@model BetStar.ViewModels.BetSlipViewModel
+
+@{
+	string idlist = "";
+
+	foreach (var item in Model.BettingOptions)
+	{
+		idlist = idlist + item.Id + "999";
+	}
+
+}
+
+BETSLIP
+
+@if (Model.BettingOptions.Count > 0)
+{
+
+
+	@foreach (var item in Model.BettingOptions)
+	{
+		<div class="betslipitem">
+			<div class="rowid">@item.Id</div>
+			<div class="row">@item.Type</div>
+			<div class="row">@item.Choice</div>
+			<div class="row">@item.Odd</div>
+		</div>
+
+
+
+	}
+
+	<h1>Amount:</h1> <input type="text" id="AmountBox" />
+
+
+	<button onclick="PlaceBet()"> Place bet </button>
+}
+else
+{
+	<h1>Betslip empty</h1>
+}
+
+
+
+
+
+
+
+<script>
+
+	function GetData() {
+
+		var stringids = "";
+		var nr = document.getElementsByClassName('rowid');
+		for (var i = 0; i < nr.length; i++) {
+			stringids = stringids + document.getElementsByClassName('rowid')[i].innerHTML + ',';
+		}
+		return stringids;
+	}
+
+	function PlaceBet() {
+
+
+		var amount = $
+			('#AmountBox').val();
+
+		alert(GetData());
+
+		$.ajax({
+			url: "/Match/PlaceBet",
+			type: "POST",
+			data: { Amount: amount, idstring: GetData() }
+		})
+			.done(function (partialViewResult) {
+				$("#betslipdiv").html(partialViewResult);
+			});
+
+
+	}
+
+</script>

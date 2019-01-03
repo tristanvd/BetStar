@@ -1,0 +1,41 @@
+﻿@using BetStar.ViewModels.Account
+@model BetStar.ViewModels.Account.LoginViewModel
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6 text-center">
+			<h1>Login</h1>
+		</div>
+		<div class="col-lg-3"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+			<form method="post">
+				<div class="boxje">
+
+					<span asp-validation-for="EMail" class="text-danger"></span>
+					<label asp-for="EMail" class="control-label">EMail</label><br />
+					<input asp-for="EMail" class="form-control" value="user" />
+
+
+
+
+					<label asp-for="PassWord" class="control-label">Wachtwoord</label><br />
+					<input asp-for="PassWord" class="form-control" type="password" value="123" />
+					<span asp-validation-for="PassWord" class="text-danger"></span>
+
+
+
+					<br />
+					<div class="loginbutton">
+						<button class="btn btn-default btn-black" type="submit"><p>Login</p></button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-lg-3"></div>
+	</div>
+</div>

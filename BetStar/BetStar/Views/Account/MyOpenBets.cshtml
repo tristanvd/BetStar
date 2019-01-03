@@ -1,0 +1,90 @@
+﻿@model BetStar.ViewModels.Account.MyBetsViewModel
+
+@{
+	ViewData["Title"] = "MyOpenBets";
+	Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<h2>MyBets</h2>
+
+<div class="betstable">
+	<div class="tablehead">
+		<div id="openbets" class="betactive">
+			<a asp-action="MyOpenBets" asp-controller="Account">OPEN</a>
+		</div>
+		<div id="closedbets">
+			<a asp-action="MyClosedBets" asp-controller="Account">CLOSED</a>
+		</div>
+
+
+		@foreach (var item in Model.MyBets)
+		{
+			if (item.Open == true)
+			{
+
+				<div class="fullbet">
+					<div class="betinfo">
+						@item.Id <br />
+						@item.Amount <br />
+						@item.Open <br />
+					</div>
+
+					<div class="allbetrules">
+						@foreach (var bo in item.BettingOptions)
+						{
+							<div class="betrule">
+								@bo.BetId <br />
+								@bo.Choice <br />
+								@bo.Id <br />
+								@bo.MatchId <br />
+								@bo.Odd <br />
+								@bo.Type <br />
+							</div>
+						}
+					</div>
+					
+				</div>
+			}
+		}
+
+
+	</div>
+
+
+</div>
+
+<style>
+	.betinfo {
+		cursor: pointer;
+		outline: none;
+	}
+
+
+	.allbetrules {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.2s ease-out;
+	}
+</style>
+
+
+
+
+<script>
+
+
+		var coll = document.getElementsByClassName("betinfo");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+			coll[i].addEventListener("click", function () {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.maxHeight) {
+					content.style.maxHeight = null;
+				} else {
+					content.style.maxHeight = content.scrollHeight + "px";
+				}
+			});
+		}
+</script>

@@ -1,0 +1,92 @@
+﻿@model BetStar.ViewModels.MatchViewModel
+
+@{
+	ViewData["Title"] = "MatchDetails";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="allbettingoptions">
+
+	<center>@Model.Match.DateTime</center>
+	<center>@Model.Match.HomeTeam - @Model.Match.AwayTeam</center>
+
+	@foreach (var item in Model.Match.BettingOptions.Select(x => x.Type).Distinct())
+	{
+		<div class="itemgroup">
+			
+			@item <br />
+			
+			@foreach (var x in Model.Match.BettingOptions)
+			{
+				if (x.Type == item)
+				{
+					if (x.Odd > 1)
+					{
+						<div class="item" onclick="Betslip(@x.Id)" id="item">
+							@x.Choice
+							<div class="bettingoptionOdd">@x.Odd</div>
+						</div>
+					}
+					else
+					{
+						<div class="item" id="item">
+							@x.Choice
+							<div class="bettingoptionOdd">locked</div>
+						</div>
+					}
+
+				}
+			}
+
+
+		</div>
+	}
+
+	
+
+</div>
+
+
+
+
+
+
+
+<script>
+
+	function GetData() {
+		
+		var stringids = "";
+		var nr = document.getElementsByClassName('rowid');
+		for (var i = 0; i < nr.length; i++) {
+			stringids = stringids + document.getElementsByClassName('rowid')[i].innerHTML + ',';
+		}
+		return stringids;
+	}
+
+	function Betslip(id) {
+
+		$.ajax({
+			url: "/Match/ChangeBetslip",
+			type: "GET",
+			data: { id: id, idstring: GetData() }
+		})
+			.done(function (partialViewResult) {
+				$("#betslipdiv").html(partialViewResult);
+			});
+
+
+	}
+	
+
+
+</script>
+
+<style>
+
+	#betslipdiv {
+		background-color:pink;
+		color:white;
+	}
+
+</style>

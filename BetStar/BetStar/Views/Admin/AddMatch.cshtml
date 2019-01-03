@@ -1,0 +1,59 @@
+﻿@model BetStar.ViewModels.MatchViewModel
+@{
+	ViewData["Title"] = "AddMatch";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="addMatch">
+
+	<form method="post">
+
+		<label asp-for="Match.HomeTeam" class="control-label">Home team</label><br />
+		<input asp-for="Match.HomeTeam" class="form-control" type="text" /><br />
+
+		<label asp-for="Match.AwayTeam" class="control-label">Away team</label><br />
+		<input asp-for="Match.AwayTeam" class="form-control" type="text" /><br />
+
+		<label asp-for="Match.DateTime" class="control-label">Date time</label><br />
+		<input asp-for="Match.DateTime" class="form-control" type="date" /><br />
+
+		<label asp-for="Match.Available" class="control-label">Available</label><br />
+		<input asp-for="Match.Available" class="form-control" type="checkbox" /><br />
+		@{
+			int i = 0; }
+
+		@foreach (Models.BettingOption item in Model.Match.BettingOptions)
+		{
+			<div class="hiddeninput">
+				<input asp-for="@item.Id" name="[@i].Id" class="form-control" type="hidden" value="@item.Id" /><br />
+				<input asp-for="@item.Type" name="[@i].Type" class="form-control" type="hidden" value="@item.Type" /><br />
+				<input asp-for="@item.Choice" name="[@i].Choice" class="form-control" type="hidden" value="@item.Choice" /><br />
+			</div>
+
+			@item.Type;
+			@item.Choice;
+
+
+
+			<input asp-for="@item.Odd" name="[@i].Odd" class="form-control" type="text" value="1" /><br />
+
+			i++;
+
+		}
+
+
+
+
+		<button type="submit">Add</button>
+
+	</form>
+
+</div>
+
+<style>
+
+	.hiddeninput {
+		display:none;
+	}
+
+</style>

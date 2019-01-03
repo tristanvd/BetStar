@@ -1,0 +1,46 @@
+﻿@model BetStar.ViewModels.Account.MyBetsViewModel
+@{
+    ViewData["Title"] = "MyClosedBets";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<h2>MyClosedBets</h2>
+
+<div class="betstable">
+	<div class="tablehead">
+		<div id="openbets">
+			<a asp-action="MyOpenBets" asp-controller="Account">OPEN</a>
+		</div>
+		<div id="closedbets" class="betactive">
+			<a asp-action="MyClosedBets" asp-controller="Account">CLOSED</a>
+		</div>
+
+
+		@foreach (var item in Model.MyBets)
+		{
+			if (item.Open == false)
+			{
+				<div class="fullbet">
+					@foreach (var bo in item.BettingOptions)
+					{
+						<div class="betrule">
+							@bo.BetId <br />
+							@bo.Choice <br />
+							@bo.Id <br />
+							@bo.MatchId <br />
+							@bo.Odd <br />
+							@bo.Type <br />
+						</div>
+					}
+					@item.Id <br />
+					@item.Amount <br />
+					@item.Open
+				</div>
+			}
+		}
+
+
+	</div>
+
+
+</div>

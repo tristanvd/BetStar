@@ -1,0 +1,31 @@
+﻿@model BetStar.ViewModels.AddBetTypeViewModel
+
+@{
+    ViewData["Title"] = "AddBetType";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddBetType</h2>
+
+<form method="post" asp-action="AddBetType" asp-controller="Admin">
+
+	<input type="text" asp-for="BetType" />
+	<button type="submit">add type</button>
+
+</form>
+
+<select>
+
+	@foreach (var item in Model.BetTypeIds)
+	{
+		<option>@item</option>
+	}
+
+</select>
+
+<form method="post" asp-action="AddBetChoice" asp-controller="Admin">
+
+	<input type="text" asp-for="BetChoice" />
+	<button type="submit">add choice</button>
+
+</form>

@@ -1,0 +1,21 @@
+﻿@model BetStar.ViewModels.Account.BalanceViewModel
+@{
+    ViewData["Title"] = "Cashier";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cashier</h2>
+
+<form method="post" id="deposit">
+
+	<input type="text" asp-for="Deposit" />
+	<button type="submit">Deposit</button>
+
+</form>
+
+<form method="post" id="withdrawal">
+
+	<input type="text" asp-for="Withdrawal" />
+	<button type="submit">Withdrawal</button>
+
+</form>
