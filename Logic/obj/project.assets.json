@@ -721,11 +721,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\trist\\source\\repos\\BetStar\\Logic\\Logic.csproj",
+      "projectUniqueName": "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\Logic\\Logic.csproj",
       "projectName": "Logic",
-      "projectPath": "C:\\Users\\trist\\source\\repos\\BetStar\\Logic\\Logic.csproj",
+      "projectPath": "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\Logic\\Logic.csproj",
       "packagesPath": "C:\\Users\\trist\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\trist\\source\\repos\\BetStar\\Logic\\obj\\",
+      "outputPath": "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\Logic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -744,8 +744,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\trist\\source\\repos\\BetStar\\Data\\Data.csproj": {
-              "projectPath": "C:\\Users\\trist\\source\\repos\\BetStar\\Data\\Data.csproj"
+            "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\Data\\Data.csproj"
             }
           }
         }

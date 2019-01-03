@@ -12277,11 +12277,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\trist\\source\\repos\\BetStar\\BetStar\\BetStar.csproj",
+      "projectUniqueName": "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\BetStar\\BetStar.csproj",
       "projectName": "BetStar",
-      "projectPath": "C:\\Users\\trist\\source\\repos\\BetStar\\BetStar\\BetStar.csproj",
+      "projectPath": "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\BetStar\\BetStar.csproj",
       "packagesPath": "C:\\Users\\trist\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\trist\\source\\repos\\BetStar\\BetStar\\obj\\",
+      "outputPath": "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\BetStar\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12300,11 +12300,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\trist\\source\\repos\\BetStar\\Logic\\Logic.csproj": {
-              "projectPath": "C:\\Users\\trist\\source\\repos\\BetStar\\Logic\\Logic.csproj"
+            "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\Logic\\Logic.csproj": {
+              "projectPath": "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\Logic\\Logic.csproj"
             },
-            "C:\\Users\\trist\\source\\repos\\BetStar\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\trist\\source\\repos\\BetStar\\Models\\Models.csproj"
+            "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\trist\\OneDrive\\Documenten\\GitHub\\BetStar\\Models\\Models.csproj"
             }
           }
         }
